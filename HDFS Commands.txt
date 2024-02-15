@@ -1,0 +1,3 @@
+#This command is use to copy all the json files to the hdfs file system in the given directory from the local file system 
+
+hdfs dfs -put *.json '/Spark'

@@ -1,0 +1,46 @@
+# This query written here is used create external table if not exists 
+
+CREATE EXTERNAL TABLE IF NOT EXISTS Output1 (
+    campaign_id STRING,
+    `date` STRING,
+    hour INT,
+    os_type STRING,
+    event STRUCT<impression:INT,click:INT,`video ad`:INT>)
+ROW FORMAT SERDE 'org.apache.hive.hcatalog.data.JsonSerDe'
+WITH SERDEPROPERTIES (
+'serialization.format' = '1',
+'ignore.malformed.json' = 'true'
+)
+STORED AS TEXTFILE
+LOCATION '/Spark/Assignment1/Output1';
+
+
+CREATE EXTERNAL TABLE IF NOT EXISTS Output2 (
+    campaign_id STRING,
+    `date` STRING,
+    hour INT,
+    store_name STRING,
+    event STRUCT<impression:INT,click:INT,`video ad`:INT>)
+ROW FORMAT SERDE 'org.apache.hive.hcatalog.data.JsonSerDe'
+WITH SERDEPROPERTIES (
+'serialization.format' = '1',
+'ignore.malformed.json' = 'true'
+)
+STORED AS TEXTFILE
+LOCATION '/Spark/Assignment1/Output2';
+
+
+
+CREATE EXTERNAL TABLE IF NOT EXISTS Output3 (
+    campaign_id STRING,
+    `date` STRING,
+    hour INT,
+    gender STRING,
+    event STRUCT<impression:INT,click:INT,`video ad`:INT>)
+ROW FORMAT SERDE 'org.apache.hive.hcatalog.data.JsonSerDe'
+WITH SERDEPROPERTIES (
+'serialization.format' = '1',
+'ignore.malformed.json' = 'true'
+)
+STORED AS TEXTFILE
+LOCATION '/Spark/Assignment1/Output3';
